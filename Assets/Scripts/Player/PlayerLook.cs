@@ -3,27 +3,29 @@ using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 20f;
+    public float sensitivity = 0.2f;
+    public float smoothSpeed = 15f;
+
+    private float targetY;
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        targetY = transform.eulerAngles.y;
     }
 
     void Update()
     {
-        if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
         float mouseX = Mouse.current.delta.ReadValue().x;
 
-        transform.Rotate(
-            0f,
-            mouseX * sensitivity * Time.deltaTime,
-            0f
+        targetY += mouseX * sensitivity;
+
+        Quaternion targetRotation =
+            Quaternion.Euler(0f, targetY, 0f);
+
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            targetRotation,
+            smoothSpeed * Time.deltaTime
         );
     }
 }
