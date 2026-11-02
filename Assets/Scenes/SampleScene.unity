@@ -274,6 +274,9 @@ MonoBehaviour:
   distance: 2
   sideOffset: 1.2
   smoothSpeed: 10
+  sensitivity: 0.08
+  minPitch: -30
+  maxPitch: 50
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 1139658591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 265.72345, y: 2, z: 407.4}
+  m_LocalPosition: {x: 265.72345, y: 3, z: 407.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -586,7 +589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d0ea009677a314986618256b93a2fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LookMouse
-  sensitivity: 1
+  sensitivity: 0.08
   smoothSpeed: 15
 --- !u!1 &1369317779
 GameObject:

@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float sensitivity = 0.2f;
+    public float sensitivity = 0.08f;
     public float smoothSpeed = 15f;
 
     private float targetY;

@@ -1,21 +1,36 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraFollowMatch : MonoBehaviour
 {
     public Transform target;
 
-    public float height = 10f; // 高さずれ
-    public float distance = 20f; // 後ろずれ
-    public float sideOffset = 0f; // 横ずれ
-    public float smoothSpeed = 6f; // 移動速度
+    public float height = 10f;
+    public float distance = 20f;
+    public float sideOffset = 0f;
+    public float smoothSpeed = 6f;
+
+    public float sensitivity = 0.08f;
+    public float minPitch = -30f;
+    public float maxPitch = 50f;
+
+    private float pitch = 0f;
 
     void LateUpdate()
     {
+        // マウスをY方向にどれだけ移動させたか
+        float mouseY = Mouse.current.delta.ReadValue().y;
+
+        pitch -= mouseY * sensitivity;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch); // 角度制限
+
+        // プレイヤーの向きを取得。その後向きを設定。
         Quaternion yRotation = Quaternion.Euler(0, target.eulerAngles.y, 0);
+        Quaternion cameraRotation = Quaternion.Euler(pitch, target.eulerAngles.y, 0);
 
-        Vector3 offset = new Vector3(sideOffset, height, -distance);
-
-        Vector3 targetPosition = target.position + yRotation * offset;
+        // 位置を調整
+        Vector3 offset = yRotation * new Vector3(sideOffset, height, -distance);
+        Vector3 targetPosition = target.position + offset;
 
         transform.position = Vector3.Lerp(
             transform.position,
@@ -23,7 +38,6 @@ public class CameraFollowMatch : MonoBehaviour
             smoothSpeed * Time.deltaTime
         );
 
-        // プレイヤーと同じ向きにする
-        transform.rotation = yRotation;
+        transform.rotation = cameraRotation;
     }
 }
