@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2d1937f6a28cef9428506b2102e8cb75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 487.7212
+      value: 598.8156
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d1937f6a28cef9428506b2102e8cb75, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 65.07938
+      value: 0.1280673
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d1937f6a28cef9428506b2102e8cb75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 516.4127
+      value: 422.20615
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2d1937f6a28cef9428506b2102e8cb75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9ffeaf58fcda3e34480a3fd1720f057b, type: 2}
     - target: {fileID: 919132149155446097, guid: 2d1937f6a28cef9428506b2102e8cb75, type: 3}
       propertyPath: m_Name
-      value: StylizedPaintTree_A1_LOD1
+      value: StylizedPaintTree_A1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
