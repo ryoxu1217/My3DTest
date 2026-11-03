@@ -21,8 +21,13 @@ public class CameraFollowMatch : MonoBehaviour
         // マウスをY方向にどれだけ移動させたか
         float mouseY = Mouse.current.delta.ReadValue().y;
 
-        pitch -= mouseY * sensitivity;
-        pitch = Mathf.Clamp(pitch, minPitch, maxPitch); // 角度制限
+        float factor =
+            mouseY < 0
+            ? (maxPitch - pitch) / (maxPitch - minPitch)
+            : (pitch - minPitch) / (maxPitch - minPitch);
+
+        pitch -= mouseY * sensitivity * factor;
+        pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
 
         // プレイヤーの向きを取得。その後向きを設定。
         Quaternion yRotation = Quaternion.Euler(0, target.eulerAngles.y, 0);
