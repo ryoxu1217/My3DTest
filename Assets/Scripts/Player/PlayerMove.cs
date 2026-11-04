@@ -6,18 +6,18 @@ public class PlayerMove : MonoBehaviour
     public float speed = 5f;
     public float runSpeed = 8f;
     public float jumpForce = 6.5f;
-
+    public float dashEnergyCost = 20f;
     private PlayerInputActions input;
     private Rigidbody rb;
+    private PlayerEnergy energy;
     private bool isGrounded = true;
     private bool jumpRequested;
 
     private void Awake()
     {
-        Debug.Log("Awake");
         input = new PlayerInputActions();
-        Debug.Log(input);
         rb = GetComponent<Rigidbody>();
+        energy = GetComponent<PlayerEnergy>();
     }
 
     private void OnEnable()
@@ -52,7 +52,20 @@ public class PlayerMove : MonoBehaviour
 
         moveDirection.Normalize();
 
-        float currentSpeed = input.Player.Dash.IsPressed() ? runSpeed : speed;
+        bool dash =
+        input.Player.Dash.IsPressed() &&
+        energy.HasEnergy(dashEnergyCost * Time.fixedDeltaTime);
+
+        if (dash)
+        {
+            energy.Consume(
+                dashEnergyCost * Time.fixedDeltaTime
+            );
+        }
+
+        float currentSpeed =
+            dash ? runSpeed : speed;
+
         
         rb.linearVelocity = new Vector3(
             moveDirection.x * currentSpeed,
