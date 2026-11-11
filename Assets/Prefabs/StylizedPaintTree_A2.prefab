@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9ffeaf58fcda3e34480a3fd1720f057b, type: 2}
+    - target: {fileID: -5754084199372789682, guid: 78a29ca28fb1a6548a4cb37c96bbab94, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5313512685816575556, guid: 78a29ca28fb1a6548a4cb37c96bbab94, type: 3}
     - target: {fileID: 919132149155446097, guid: 78a29ca28fb1a6548a4cb37c96bbab94, type: 3}
       propertyPath: m_Name
       value: StylizedPaintTree_A2
