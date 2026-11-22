@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
     public float runSpeed = 8f;
     public float jumpForce = 6.5f;
     public float dashEnergyCost = 20f;
-    private PlayerInputActions input;
+    private InputActions input;
     private Rigidbody rb;
     private PlayerEnergy energy;
     private bool isGrounded = true;
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        input = new PlayerInputActions();
+        input = new InputActions();
         rb = GetComponent<Rigidbody>();
         energy = GetComponent<PlayerEnergy>();
     }

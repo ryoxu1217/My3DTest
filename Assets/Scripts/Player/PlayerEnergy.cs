@@ -22,7 +22,6 @@ public class PlayerEnergy : MonoBehaviour
         {
             CurrentEnergy += recoveryRate * Time.deltaTime;
             CurrentEnergy = Mathf.Min(CurrentEnergy, maxEnergy);
-            Debug.Log(CurrentEnergy);
         }
     }
 
